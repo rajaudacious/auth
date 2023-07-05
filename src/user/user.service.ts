@@ -19,11 +19,12 @@ export class UserService {
   ) { }
 
   async getInfo(token: string): Promise<any> {
-    var { email, name, picture, email_verified }: DecodedToken = jwt_decode(token);
+    console.log(token);
+    const { email, name, picture, email_verified }: DecodedToken = jwt_decode(token);
     const user = await this.userModel.findOne({ email: email });
     console.log(user);
     if (!user) {
-      await this.userModel.create({ cors: true },{
+      await this.userModel.create({
         email,
         name,
         picture,

@@ -7,8 +7,6 @@ export class UserController {
 
   @Get('info/:token')
   getInfo(@Param('token') token: string): Promise<any> {
-    console.log(token);
-
     return this.userService.getInfo(token);
   }
 }
